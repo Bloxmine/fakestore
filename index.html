@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everything on sale!</title>
+    <style>
+        :root {
+            --primary-color: #00044a;
+        }
+        body {
+            font-family: 'PPNikkeiJournal-Regular', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        h2 {
+            color: var(--primary-color);
+        }
+        #products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        div {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        div:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        img {
+            display: block;
+            margin: 0 auto;
+        }
+        img:hover {
+            transform: scale(2);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            box-shadow: 0 0 100px rgba(0, 0, 0, 1);
+        }
+        img {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            outline: 2px solid var(--primary-color);
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--primary-color);
+            color: white;
+        }
+        @font-face {
+            font-family: 'PPNikkeiJournal-Regular';
+            src: url('/fonts/PPNikkeiJournal-Regular.otf') format('opentype');
+        }
+        /* media queries, not used in the end
+        @media (max-width: 1200px) {
+            #products {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+        @media (max-width: 800px) {
+            #products {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+        }
+        @media (max-width: 500px) {
+            #products {
+                grid-template-columns: 1fr;
+            }
+        } */
+    </style>
+</head>
+<body>
+<h1>Everything's on sale!</h1>
+<marquee><h2>YES! You've heard that right, we are doing a going out of business sale! So don't wait any further, because in a few months I'll be gone and you can't get these AMAZING deals anymore! What are you waiting for? Buy these amazing products from me, Crazy Joe! I've been an RV saleman for 36 years but ever since my wife left me, I've gone into dropshipping, but I'm STILL the same Crazy Joe who you used to see on WK105! Remember when president Carter came to buy a peanut truck from me? I do. He's old now, but his peanut truck is still there, in his garage. -- We've got TV's, bags, bracelets, jackets, real gold, cash 4 gold, gold fish -- THESE DEALS ARE GOLDEN! Let me tell you, at Crazy Joe's RV Imperium, I used to sell more than just RV's, I also used to sell barbecues and barbecue related paraphernalia. YES, when my son, STEVE was born, I couldn't be happier, but my wife's boyfriend didn't appreciate me spending time with my SON, so I happened to also sell slugs and you can GUESS what happened after BUT my PAROLE OFFICER is here. -- SO I HOPE YOU BUY MY THINGS BECAUSE WE'RE GOING OUT OF BUSINESS, BYE!!!</h2></marquee>
+    <div id="products"></div>
+    <footer>
+        <p>heind</p>
+    </footer>
+    <script>
+        fetch("https://fakestoreapi.com/products?limit=16&sort=random")
+            .then((res) => res.json())
+            .then((json) => {
+            const productsDiv = document.getElementById('products');
+            json.forEach(product => {
+                const productDiv = document.createElement('div');
+                // price is a float, so toFixed(2) to show 2 decimal places
+                productDiv.innerHTML = `
+                <img src="${product.image}" alt="${product.title}" width="100">
+                <h2>${product.title}</h2>
+                <p>${product.description}</p>
+                <p>Price: €${product.price.toFixed(2)}</p>
+                `;
+                productsDiv.appendChild(productDiv);
+            });
+            });
+    </script>
+</body>
+</html>
