@@ -87,7 +87,7 @@
         <p>heind</p>
     </footer>
     <script>
-        fetch("https://fakestoreapi.com/products?limit=16&sort=random")
+        fetch("https://fakestoreapi.com/products")
             .then((res) => res.json())
             .then((json) => {
             const productsDiv = document.getElementById('products');
