@@ -1,5 +1,6 @@
 # FakeStore
-This HTML document represents a simple e-commerce webpage with a sale theme. 
+![Header](header.jpg)
+This project document represents a simple e-commerce webpage with a sale theme. 
 It includes the following sections:
 
 1. Head Section:
@@ -27,8 +28,6 @@ CSS Styles:
     - Adds hover effects to product divs and images.
     - Includes a custom font for the body text.
     - Contains commented-out media queries for responsive design (not used).
-
-Note: The marquee element is deprecated in HTML and should be avoided in modern web development.
 
 ## Instructions to run:
 
